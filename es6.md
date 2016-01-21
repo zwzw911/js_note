@@ -14,3 +14,10 @@
 1. codePointAt(idx)：获得**单个字符（所有）**的**码点**
 2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'
 3. 
+
+###Symbol
+1. Symbol是非对象，所以不能用new。
+2. Symbol无法与其它类型进行运算。
+3. **不能使用.运算符作为属性，而必须使用[]**。因为.运算符把属性作为字符处理。a.mySymbol=1===>mySymbol是字符
+4. Symbol可以：var a={ERROR:Symbol(),WARN:Symbol(),INFO:Symbol()}。
+5. Symbol作为属性名，该属性不会出现在**for...in、for...of**循环中，也**不会**被**Object.keys()、Object.getOwnPropertyNames()**返回。但是，它也不是私有属性，有一个**Object.getOwnPropertySymbols**方法，可以获取指定对象的所有Symbol属性名
