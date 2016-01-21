@@ -9,3 +9,8 @@
 8. ES5，全局变量就是全局属性global的属性。ES6中，var/function还是照此处理，但是let/const/class定义的全局变量不在是global的属性了  
 
 ### 解构
+
+### 字符
+1. codePointAt(idx)：获得**单个字符（所有）**的**码点**
+2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'
+3. 
