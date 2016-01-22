@@ -22,3 +22,6 @@
 4. Symbol可以：var a={ERROR:Symbol(),WARN:Symbol(),INFO:Symbol()}。
 5. Symbol作为属性名，该属性不会出现在**for...in、for...of**循环中，也**不会**被**Object.keys()、Object.getOwnPropertyNames()**返回。但是，它也不是私有属性，有一个**Object.getOwnPropertySymbols**方法，可以获取指定对象的所有Symbol属性名。
 6. **symbol.for()**:它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。
+
+###Iterator
+1. js中，表示'集合'，ES5中有array和object，ES6添加map和set。遍历器（Iterator）就是这样一种机制。它是**一种接口**，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。Iterator的作用有三个：一是为各种数据结构，**提供一个统一的、简便的访问接口**；二是使得**数据结构的成员能够按某种次序排列**；三是ES6创造了一种新的遍历命令**for...of**循环，Iterator接口主要供for...of消费。**遍历器对象本质上，就是一个指针对象**。指向当前数据结构的起始位置。调用指针对象的next方法，可以将指针指向数据结构的第一个（下一个）成员，直到结尾。
