@@ -20,4 +20,5 @@
 2. Symbol无法与其它类型进行运算。
 3. **不能使用.运算符作为属性，而必须使用[]**。因为.运算符把属性作为字符处理。a.mySymbol=1===>mySymbol是字符
 4. Symbol可以：var a={ERROR:Symbol(),WARN:Symbol(),INFO:Symbol()}。
-5. Symbol作为属性名，该属性不会出现在**for...in、for...of**循环中，也**不会**被**Object.keys()、Object.getOwnPropertyNames()**返回。但是，它也不是私有属性，有一个**Object.getOwnPropertySymbols**方法，可以获取指定对象的所有Symbol属性名
+5. Symbol作为属性名，该属性不会出现在**for...in、for...of**循环中，也**不会**被**Object.keys()、Object.getOwnPropertyNames()**返回。但是，它也不是私有属性，有一个**Object.getOwnPropertySymbols**方法，可以获取指定对象的所有Symbol属性名。
+6. **symbol.for()**:它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。
