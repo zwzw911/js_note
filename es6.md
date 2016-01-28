@@ -17,9 +17,13 @@
 
 ###7 数组的扩展
 #####Arrar.from
-Array.from()接收2个参数，第一个是**类似array的对象**和**可遍历（iterable）对象（set/map）**，第二个是函数。将第一个参数转换成数组，并对其中每个元素引用第二个参数的处理。
+Array.from()接收2个参数，第一个是**类似array的对象**和**可遍历（iterable）对象（set/map）**，第二个是函数(类似数组的map方法)。将第一个参数转换成数组，并对其中每个元素引用第二个参数的处理。
 类似数组的对象本质就是有length属性。**ArraY.from({length:3})**
-
+[].slice.call(obj)===>Array.from(obj,mapFunc)
+只要有一个原始的数据结构，你就可以先对它的值进行处理，然后转成规范的数组结构，进而就可以使用数量众多的数组方法。
+将字符串转为数组，然后返回字符串的长度。因为它能正确处理各种Unicode字符，可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的bug。
+#####Arrar.of
+用于将一组**值**，转换为数组。ES5中的Array/new Array，参数只有一个，实际指定数组长度。Array.of的行为一致。
 
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
