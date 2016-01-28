@@ -24,6 +24,26 @@ Array.from()接收2个参数，第一个是**类似array的对象**和**可遍�
 将字符串转为数组，然后返回字符串的长度。因为它能正确处理各种Unicode字符，可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的bug。
 #####Arrar.of
 用于将一组**值**，转换为数组。ES5中的Array/new Array，参数只有一个，实际指定数组长度。Array.of的行为一致。
+#####数组**实例**的copyWithin方法
+Array.prototype.copyWithin(target, start = 0, end = this.length)
+    target（必需）：从该位置开始替换数据。
+    start（可选）：从该位置开始读取数据，默认为0。如果为负值，表示倒数。
+    end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+#####数组**实例**的find()和findIndex
+find参数为回调函数，回调函数有3个参数(后2个可以省略)，当前值，当前索引，原始数组。回调函数返回true，find返回对应的**第一个**元素；否则返回undefined。
+[1, 5, 10, 15].find((val,idx,arr)=>val=> && idx>1)  ====>   10
+findIndex和find类似，只是返回Index或者－1（没有找到）。
+[NaN].findIndex((val,idx,arr)=> isNaN(val))
+#####数组实例的fill
+fill：3个参数，第一个，填充数组的值。第二个和第三个参数，用于指定填充的起始位置和结束位置
+#####keys()/values()/entries()
+for...of。用于遍历数组。它们都返回一个遍历器对象
+#####includes
+返回一个**布尔值**，表示某个数组是否包含给定的**值**。ES7支持。
+#####空位
+**由于空位的处理规则非常不统一，所以建议避免出现空位。**
+#####数组推导
+ES7支持。
 
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
