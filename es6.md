@@ -59,8 +59,10 @@ ES7支持。
 
 ###15 Generator
 执行Generator函数会**返回一个遍历器对象**，也就是说，Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。
+next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false
 任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象
-function* gen(){};var g = gen();g[Symbol.iterator]() === g
+function* gen(){};var g = gen();g\[Symbol.iterator\]() === g
+**yield句本身没有返回值，或者说总是返回undefined**。
 
 ### 21 编程风格
 #####1 块级作用域
