@@ -58,11 +58,12 @@ ES7支持。
 2. 默认的Iterator接口部署在数据结构的**Symbol.iterator属性**，或者说，一个数据结构只要具有Symbol.iterator**属性**，就可以认为是“可遍历的”（iterable）。Symbol.iterator本身是一个表达式，返回Symbol对象的iterator属性，这是一个**预定义好的、类型为Symbol的特殊值**，所以要放在方括号内。在ES6中，有三类数据结构原生具备Iterator接口：**数组**、**某些类似数组的对象**、**Set**和**Map**结构。对象（Object）之所以没有默认部署Iterator接口，是因为对象的哪个属性先遍历，哪个属性后遍历是不确定的，需要开发者手动指定。**本质上，遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历器接口，就等于部署一种线性转换**。不过，严格地说，对象部署遍历器接口并不是很必要，因为这时对象实际上被当作Map结构使用，ES5没有Map结构，而ES6原生提供了。
 
 ###15 Generator
-执行Generator函数会**返回一个遍历器对象**，也就是说，Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。
-next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false
-任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象
-function* gen(){};var g = gen();g\[Symbol.iterator\]() === g
-**yield句本身没有返回值，或者说总是返回undefined**。
+执行Generator函数会**返回一个遍历器对象**，也就是说，Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。  
+next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false  
+任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象 
+**1. yield句本身没有返回值，或者说总是返回undefined。2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
+function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
+
 
 ### 21 编程风格
 #####1 块级作用域
