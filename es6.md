@@ -65,6 +65,7 @@ next方法返回一个对象，它的value属性就是当前yield语句的值hel
 function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
 
 
+
 ### 21 编程风格
 #####1 块级作用域
 1) let取代var，防止变量提升。
