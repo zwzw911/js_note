@@ -77,7 +77,11 @@ function* gen(){};var g = gen();g\[Symbol.iterator\]() === g
 6. 使用extends进行继承。其中使用super代指父类。构造函数中必需先执行super。super返回this。
 7. 子类的__proto__指向父类（构造函数的继承），子类的prototype.__proto__指向父类的__proto__（方法的继承）
 8. Object.getPrototypeOf()：从子类获得父类
-9. 原生构造函数：Boolean()/Number()/String()/Array()/Date()/Function()/RegExp()/Error()/Object()/
+9. 原生构造函数：Boolean()/Number()/String()/Array()/Date()/Function()/RegExp()/Error()/Object()
+10. lass内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为
+11. 某个方法之前加上星号（*），就表示该方法是一个Generator函数
+12. 加上**static**关键字，就表示该方法不会被实例继承，而是直接通过类来调用
+13. new.target属性
 
 ### 21 编程风格
 #####1 块级作用域
