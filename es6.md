@@ -68,7 +68,10 @@ next方法返回一个对象，它的value属性就是当前yield语句的值hel
 **1. yield句本身没有返回值，或者说总是返回undefined。2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
 function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
 
-
+###18 class
+1. class是语法糖，对ES5的“类”定义进行包装（**类的数据类型是函数**）。constructor()是构造函数（**指向类本生**），类方法无需function关键字，直接函数名+函数体即可（**类方法实际仍然定义在prototype属性上**）。自定义的类方法，无法枚举（Object.keys(class.prototype)===[]），只能通过getOwnPropertyName获得
+2. constructor是必须的，如果没有定义，会自动创建一个空构造函数。constructor可以返回其它对象（而不是this）
+3. 类的属性，如果不是定义在this上，那么默认是在prototype上。类的所有实例共享一个原型对象。意味着，可以通过更改实例的原型，来更改类的方法定义（不推荐）。
 
 ### 21 编程风格
 #####1 块级作用域
