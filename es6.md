@@ -9,7 +9,8 @@
 8. ES5，全局变量就是全局对象global的属性。ES6中，var/function还是照此处理，但是let/const/class定义的全局变量不在是global的属性了  
 
 ###3 变量的解构
-
+1. 解构需要等号左边是array，**右边的值有iterator接口**（即可以遍历）。   
+2. 
 ###4 字符串扩展
 1. codePointAt(idx)：获得**单个字符（所有）**的**码点**
 2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'
@@ -65,8 +66,8 @@ ES7支持。
 7. 对象默认不能通过for...of进行遍历。可以使用Object.keys()读取key。或者：如果是类似数组的对象（key为length+数字0/1/2...），可以通过Arrary.from()转换成array后使用for...of；如果不是类似array的对象，那么可以
 
 ###15 Generator
-执行Generator函数会**返回一个遍历器对象**，也就是说，Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。  
-next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false  
+1. generator函数格式function* func(param){yeild a; yeild b;return c}。  
+2. generator函数执行后，**返回一个遍历器对象**。var it=func(); it.next()。Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false  
 任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象 
 **1. yield句本身没有返回值，或者说总是返回undefined。2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
 function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
