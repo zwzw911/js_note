@@ -14,7 +14,7 @@
 3. 
 ###4 字符串扩展
 1. codePointAt(idx)：获得**单个字符（所有）**的**码点**
-2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'
+2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'    
 3. 
 
 ###7 数组的扩展
@@ -50,9 +50,12 @@ ES7支持。
 
 ###8 函数的扩展  
 1. ES6可以使用默认值，最好放在最后。 
-    function的length属性返回**默认参数之前**的参数个数。
-2. rest（...）:把剩余参数放入一个数组。`let func=(a,...b)=>{console.log(a);conso.elog(b)}    func(1,2,3,4)===>1 [2,3,4]`  
-3. 
+    function的length属性返回**默认参数之前**的参数个数，并且不包括rest参数。
+2. rest（...）:把剩余参数放入一个数组。**一般用在函数定义中**。`let func=(a,...b)=>{console.log(a);conso.elog(b)}    func(1,2,3,4)===>1 [2,3,4]`。。**rest放在最后，否则报错**（所以称为rest）    
+3. 扩展运算符(...)：格式和rest一样，但是**一般用在表达式或者函数调用的参数**。  
+    3.1 数组转换成函数参数 `Math.max(...[0,1,2])`，ES5的写法:`Math.max.apply(null,[1,2,3,4])`  
+    3.2 array.push：push的参数不能是数组，使用...扩展数组：`array.push(...[1,2])`
+    3.3 合并数组：ES5需要用到concat`[0].concat([2,3,4])`,ES6直接：`[1,..[2,3]]`
 
 
 ###10 Symbol
