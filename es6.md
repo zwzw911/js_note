@@ -68,9 +68,12 @@ ES7支持。
 ###15 Generator
 1. generator函数格式function* func(param){yeild a; yeild b;return c}。  
 2. generator函数执行后，**返回一个遍历器对象**。var it=func(); it.next()。Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。next方法返回一个对象，它的value属性就是当前yield语句的值hello，done属性的值false  
-任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象 
-**1. yield句本身没有返回值，或者说总是返回undefined。2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
+3. 任意一个**对象的Symbol.iterator方法，等于该对象的遍历器对象生成函数**，调用该函数会返回该对象的一个遍历器对象   
+4. **1. yield句本身没有返回值，或者说总是返回undefined。x=yeild 2，执行next()，返回2（2 是 yeild产生的），但是x=undefined  2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
 function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
+5. next()方法可以带参数，作为上一次yeild产生的值。但是只能在第二次及之后才能带参数，第一次next()不能带参数。  
+6. yeild\*：跟的是遍历器函数。如果在generator中调用另一个generator，格式为 yeild\* generator1()。如果只是yeild generator，返回的是遍历器对象。  
+7. 
 
 ###18 class
 1. class是语法糖，对ES5的“类”定义进行包装（**类的数据类型是函数**）。constructor()是构造函数（**指向类本生**），类方法无需function关键字，直接函数名+函数体即可（**类方法实际仍然定义在prototype属性上**）。自定义的类方法，无法枚举（Object.keys(class.prototype)===[]），只能通过getOwnPropertyName获得
