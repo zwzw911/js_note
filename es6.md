@@ -10,7 +10,8 @@
 
 ###3 变量的解构
 1. 解构需要等号左边是array，**右边的值有iterator接口**（即可以遍历）。   
-2. 
+2. 或者左边是对象，右边也是对象，key相等。{a,b}={a:1,b:2}。应用范围，函数的参数结构。  
+3. 
 ###4 字符串扩展
 1. codePointAt(idx)：获得**单个字符（所有）**的**码点**
 2. charCodeAt()/charAt():获得单个字符（2字节）的码点/字符。var s=1; s.charCodeAt(0)==>49; s.charAt(0)==>'1'
@@ -46,6 +47,12 @@ for...of。用于遍历数组。它们都返回一个遍历器对象
 #####数组推导
 ES7支持。
 
+
+###8 函数的扩展  
+1. ES6可以使用默认值，最好放在最后。  
+2. function的length属性返回不包括默认参数在内的参数个数。  
+
+
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
 2. Symbol无法与其它类型进行运算。
@@ -72,7 +79,7 @@ ES7支持。
 4. **1. yield句本身没有返回值，或者说总是返回undefined。x=yeild 2，执行next()，返回2（2 是 yeild产生的），但是x=undefined  2. yield不能用在普通函数中。3. yield语句如果用在一个表达式之中，必须放在圆括号里面。**。console.log('Hello' + (yield 123))  
 function* gen(){};var g = gen();g\[Symbol.iterator\]() === g  
 5. next()方法可以带参数，作为上一次yeild产生的值。但是只能在第二次及之后才能带参数，第一次next()不能带参数。  
-6. yeild\*：跟的是遍历器函数。如果在generator中调用另一个generator，格式为 yeild\* generator1()。如果只是yeild generator，返回的是遍历器对象。  
+6. yeild\*：跟的是遍历器函数或者带有遍历器接口的（例如，array，map/set，string）。yeild*等同于for...of。如果在generator中调用另一个generator，格式为 yeild\* generator1()。如果只是yeild generator，返回的是遍历器对象。  
 7. 
 
 ###18 class
