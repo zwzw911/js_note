@@ -54,13 +54,15 @@ ES7支持。
 6. **symbol.for()**:它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的Symbol值。如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。
 
 ###14 Iterator和for...of
-1. js中，表示'集合'，ES5中有array和object，ES6添加map和set。**字符类似array，所以也有Symbol.iterator属性**。遍历器（Iterator）就是这样一种机制。它是**一种接口**，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。Iterator的作用有三个：一是为各种数据结构，**提供一个统一的、简便的访问接口**；二是使得**数据结构的成员能够按某种次序排列**；三是ES6创造了一种新的遍历命令**for...of**循环，Iterator接口主要供for...of消费。**遍历器对象本质上，就是一个指针对象**。指向当前数据结构的起始位置。调用指针对象的next方法，可以将指针指向数据结构的第一个（下一个）成员，直到结尾。Iterator只是把接口规格加到数据结构之上，所以，**遍历器与它所遍历的那个数据结构，实际上是分开的**，  
+1. js中，表示'集合'，ES5中有array和object，ES6添加map和set。**字符类似array，所以也有Symbol.iterator属性**。以及Generator对象。  
+2. 遍历器（Iterator）就是这样一种机制。它是**一种接口**，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。Iterator的作用有三个：一是为各种数据结构，**提供一个统一的、简便的访问接口**；二是使得**数据结构的成员能够按某种次序排列**；三是ES6创造了一种新的遍历命令**for...of**循环，Iterator接口主要供for...of消费。**遍历器对象本质上，就是一个指针对象**。指向当前数据结构的起始位置。调用指针对象的next方法，可以将指针指向数据结构的第一个（下一个）成员，直到结尾。Iterator只是把接口规格加到数据结构之上，所以，**遍历器与它所遍历的那个数据结构，实际上是分开的**，  
 2. 遍历器是对象，带有一个next方法（函数），此方法返回对象。{next:function(){return {value,done:}}}。  
 2. 默认的Iterator接口部署在数据结构的**Symbol.iterator属性**，或者说，一个数据结构只要具有Symbol.iterator**属性**，就可以认为是“可遍历的”（iterable）。Symbol.iterator本身是一个表达式，返回Symbol对象的iterator属性，这是一个**预定义好的、类型为Symbol的特殊值**，所以要放在方括号内。在ES6中，有三类数据结构原生具备Iterator接口：**数组**、**某些类似数组的对象**、**Set**和**Map**结构。对象（Object）之所以没有默认部署Iterator接口，是因为对象的哪个属性先遍历，哪个属性后遍历是不确定的，需要开发者手动指定。**本质上，遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历器接口，就等于部署一种线性转换**。不过，严格地说，对象部署遍历器接口并不是很必要，因为这时对象实际上被当作Map结构使用，ES5没有Map结构，而ES6原生提供了。
-3. 遍历是一个带有**next()，return()/throw()**的对象，必需部署在**[Symbol.iterator]**属性上。next()返回{value:,done}。return()用在for...of循环提前退出时（出错，break），必要的资源清理工作
-4. for...in只能获得key，for...of获得value（数组，**key必需为数字**）。但是通过**entries()或者keys()**属性，也可以遍历key。
+3. 遍历是一个带有**next()，return()/throw()**的对象，必需部署在**[Symbol.iterator]**属性上。next()返回{value:,done}。return()用在for...of循环提前退出时（出错，break），必要的资源清理工作。next()是必须的，return()和throw()是可选的。turow()主要为generator，iterator一般不用。
+4. for...in只能获得key，for...of获得value（数组，**key必需为数字**，否则不返回对应的value）。但是通过**entries()或者keys()**属性，也可以遍历key。
 5. 对于**Map**，for..of返回是**[key：valeu]数组**;对于set，返回的是值。
-6. 比较：for：麻烦；forEach，无法break；for...in:读取key（以字符串的方式），读取原型上的key，顺序不定；for...of：客服所有以上缺点。
+6. 比较：for：麻烦；forEach，无法break；for...in:读取key（以字符串的方式），读取原型上的key，顺序不定；for...of：客服所有以上缺点。  
+7. 对象默认不能通过for...of进行遍历。可以使用Object.keys()读取key。或者：如果是类似数组的对象（key为length+数字0/1/2...），可以通过Arrary.from()转换成array后使用for...of；如果不是类似array的对象，那么可以
 
 ###15 Generator
 执行Generator函数会**返回一个遍历器对象**，也就是说，Generator函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历Generator函数内部的每一个状态。  
