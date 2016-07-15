@@ -56,7 +56,7 @@ ES7支持。
     3.1 数组转换成函数参数 `Math.max(...[0,1,2])`，ES5的写法:`Math.max.apply(null,[1,2,3,4])`  
     3.2 array.push：push的参数不能是数组，使用...扩展数组：`array.push(...[1,2])`
     3.3 合并数组：ES5需要用到concat`[0].concat([2,3,4])`,ES6直接：`[1,..[2,3]]`
-
+    3.4 函数返回值：返回数组，
 
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
