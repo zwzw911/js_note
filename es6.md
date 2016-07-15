@@ -52,11 +52,20 @@ ES7支持。
 1. ES6可以使用默认值，最好放在最后。 
     function的length属性返回**默认参数之前**的参数个数，并且不包括rest参数。
 2. rest（...）:把剩余参数放入一个数组。**一般用在函数定义中**。`let func=(a,...b)=>{console.log(a);conso.elog(b)}    func(1,2,3,4)===>1 [2,3,4]`。。**rest放在最后，否则报错**（所以称为rest）    
-3. 扩展运算符(...)：格式和rest一样，但是**一般用在表达式或者函数调用的参数**。  
+3. 扩展运算符(...)：格式和rest一样，但是**一般用在表达式或者函数调用的参数**。**适用于带有Iterator接口的数据**。  
     3.1 数组转换成函数参数 `Math.max(...[0,1,2])`，ES5的写法:`Math.max.apply(null,[1,2,3,4])`  
     3.2 array.push：push的参数不能是数组，使用...扩展数组：`array.push(...[1,2])`
     3.3 合并数组：ES5需要用到concat`[0].concat([2,3,4])`,ES6直接：`[1,..[2,3]]`
     3.4 函数返回值：返回数组，
+4. 箭头函数：  
+   `const full = ({ first, last }) => first + ' ' + last;`  
+   // 等同于  
+    `function full(person) {`  
+       `return person.first + ' ' + person.last;`  
+    `}`
+    **箭头函数完成变量解构**。  
+    **如果只有一条语句，无需任何括号，且默认是return**。  
+    **this:因为箭头函数没有自己的this，所以其this实际绑定外层的this**  
 
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
