@@ -102,12 +102,12 @@ function* gen(){};var g = gen();g\[Symbol.iterator\]() === g
 7. 
 
 ###18 class
-1. class是语法糖，对ES5的“类”定义进行包装（**类的数据类型是函数**）。constructor()是构造函数（**指向类本生**），类方法无需function关键字，直接函数名+函数体即可（**类方法实际仍然定义在prototype属性上**）。自定义的类方法，无法枚举（Object.keys(class.prototype)===[]），只能通过getOwnPropertyName获得
-2. constructor是必须的，如果没有定义，会自动创建一个空构造函数。constructor可以返回其它对象（而不是this）
-3. 类的属性，如果不是定义在this上，那么默认是在prototype上。类的所有实例共享一个原型对象。意味着，可以通过更改实例的原型，来更改类的方法定义（不推荐）。
+1. class是语法糖，对ES5的“类”定义进行包装（**类的数据类型是函数**）。constructor()是构造函数（**指向类本身，如果没有定义，会默认使用空函数constrouct(){}**），类方法无需function关键字，直接函数名+函数体即可（**类方法实际仍然定义在prototype属性上**）。自定义的类方法，无法枚举（Object.keys(class.prototype)===[]），只能通过getOwnPropertyName获得
+2. **constructor是必须的，如果没有定义，会自动创建一个空构造函数**。constructor可以返回其它对象（而不是this）
+3. 类的属性，如果不是定义在this上，那么默认是在prototype上。类的所有实例共享一个原型对象。意味着，可以通过更改实例的原型(__proto__)，来更改类的方法定义（不推荐）。
 4. 类表达式。const MyClass = class Me {}，或者省略Me。此处类名是MyClass，Me是仅供class内部使用，代指class本身。
-5. class没有变量提升（必需先定义，后使用）；class内部默认严格模式。
-6. 使用extends进行继承。其中使用super代指父类。构造函数中必需先执行super。super返回this。
+5. class没有变量提升（必需先定义，后使用）；**class内部默认严格模式**。
+6. 使用extends进行继承。其中使用super代指父类。构造函数中必需先执行super()。ES6中，子类没有自己的this，而是调用super()之后，返回父类的this，然后在此基础上进行修改（加入子类的属性）。
 7. 子类的__proto__指向父类（构造函数的继承），子类的prototype.__proto__指向父类的__proto__（方法的继承）
 8. Object.getPrototypeOf()：从子类获得父类
 9. 原生构造函数：Boolean()/Number()/String()/Array()/Date()/Function()/RegExp()/Error()/Object()
