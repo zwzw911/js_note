@@ -53,10 +53,10 @@ ES7支持。
     function的length属性返回**默认参数之前**的参数个数，并且不包括rest参数。
 2. rest（...）:把剩余参数放入一个数组。**一般用在函数定义中**。`let func=(a,...b)=>{console.log(a);conso.elog(b)}    func(1,2,3,4)===>1 [2,3,4]`。。**rest放在最后，否则报错**（所以称为rest）    
 3. 扩展运算符(...)：格式和rest一样，但是**一般用在表达式或者函数调用的参数**。**适用于带有Iterator接口的数据**。  
-    3.1 数组转换成函数参数 `Math.max(...[0,1,2])`，ES5的写法:`Math.max.apply(null,[1,2,3,4])`  
-    3.2 array.push：push的参数不能是数组，使用...扩展数组：`array.push(...[1,2])`
-    3.3 合并数组：ES5需要用到concat`[0].concat([2,3,4])`,ES6直接：`[1,..[2,3]]`
-    3.4 函数返回值：返回数组，
+    3.1 数组转换成函数参数 `Math.max(...[0,1,2])`，ES5的写法:`Math.max.apply(null,[1,2,3,4])`   
+    3.2 array.push：push的参数不能是数组，使用...扩展数组：`array.push(...[1,2])`  
+    3.3 合并数组：ES5需要用到concat`[0].concat([2,3,4])`,ES6直接：`[1,..[2,3]]`  
+    3.4 函数返回值：返回数组，  
 4. 箭头函数：  
    `const full = ({ first, last }) => first + ' ' + last;`  
    // 等同于  
@@ -75,7 +75,7 @@ ES7支持。
 ###9 对象的扩展
 1. 直接传入定义过的变量。`let a=1; let b={a}`等于`let b={a:1]`。`function (x,y){console.log({x,y})}`等于`console.log({x:x,y:y})`。
 2. 直接传入（定义的）函数：`a={func(x){console.log(x)}}` or `let func=(x)=>{console.log(x)}; a={func}` 等于 `a={func:function(x){console.log(x)}}`
-
+3. exports：`module.exports={funcA,funcB,funcC}`等于`module.exports={funcA:funcA,funcB:funcB,funcC:funcC}`
 
 
 ###10 Symbol
