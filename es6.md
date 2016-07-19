@@ -72,6 +72,12 @@ ES7支持。
 6. 尾调递归  
    递归函数最好使用尾调函数，防止堆栈溢出（节省内存）。  
 
+###9 对象的扩展
+1. 直接传入定义过的变量。`let a=1; let b={a}`等于`let b={a:1]`。`function (x,y){console.log({x,y})}`等于`console.log({x:x,y:y})`。
+2. 直接传入（定义的）函数：`a={func(x){console.log(x)}}` or `let func=(x)=>{console.log(x)}; a={func}` 等于 `a={func:function(x){console.log(x)}}`
+
+
+
 ###10 Symbol
 1. Symbol是非对象，所以不能用new。
 2. Symbol无法与其它类型进行运算。
