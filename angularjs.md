@@ -7,5 +7,5 @@
 
 
 ####select  
-1. select通过ng-options选项获得options的内容。ng-options对应的是数组。    
+1. select通过ng-options选项获得options的内容。ng-options对应的是数组，其下元素**必须**为对象。    
 2. ng-model对应的ng-options中的一个对象（ng-options对应的数组的一个元素）  
